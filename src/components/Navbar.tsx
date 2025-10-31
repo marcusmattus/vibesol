@@ -30,10 +30,17 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
-            <Button variant="ghost" className="hidden sm:inline-flex">
+            <Button 
+              variant="ghost" 
+              className="hidden sm:inline-flex"
+              onClick={() => window.location.href = '/auth'}
+            >
               Sign In
             </Button>
-            <Button className="gradient-sunset text-white hover:opacity-90">
+            <Button 
+              className="gradient-sunset text-white hover:opacity-90"
+              onClick={() => window.location.href = '/auth'}
+            >
               Get Started
             </Button>
             <Button variant="ghost" size="icon" className="md:hidden">

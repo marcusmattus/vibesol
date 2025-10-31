@@ -40,6 +40,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="bg-white text-primary hover:bg-white/90 shadow-2xl text-lg px-8 py-6 rounded-xl group"
+              onClick={() => window.location.href = '/auth'}
             >
               <Rocket className="w-5 h-5 mr-2 group-hover:translate-y-[-2px] transition-transform" />
               Start Building
@@ -48,9 +49,10 @@ const Hero = () => {
               size="lg" 
               variant="outline"
               className="glass-effect text-white border-white/30 hover:bg-white/10 text-lg px-8 py-6 rounded-xl"
+              onClick={() => window.location.href = '/auth'}
             >
               <Zap className="w-5 h-5 mr-2" />
-              View Demo
+              Get Started
             </Button>
           </div>
 
