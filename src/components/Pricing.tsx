@@ -9,9 +9,9 @@ const plans = [
     period: "start free",
     description: "Only pay for what you use",
     features: [
+      "Claude Sonnet 4.5: $3/M input",
       "Gemini Flash: $0.075/M tokens",
       "Gemini Pro: $1.25/M tokens",
-      "GPT-5: $2.50/M tokens",
       "No monthly fees",
       "Full feature access",
     ],
@@ -23,9 +23,9 @@ const plans = [
     period: "one-time",
     description: "Perfect to get started",
     features: [
+      "~333K Claude input tokens",
       "~133K Gemini Flash tokens",
       "~8K Gemini Pro tokens",
-      "~4K GPT-5 tokens",
       "Never expires",
       "Add more anytime",
     ],
@@ -36,9 +36,9 @@ const plans = [
     period: "one-time",
     description: "For serious builders",
     features: [
+      "~1.6M Claude input tokens",
       "~666K Gemini Flash tokens",
       "~40K Gemini Pro tokens",
-      "~20K GPT-5 tokens",
       "Priority processing",
       "Email support",
     ],

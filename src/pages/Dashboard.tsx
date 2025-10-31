@@ -4,13 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { LogOut, MessageSquare, Code, Coins } from "lucide-react";
+import { LogOut, Coins } from "lucide-react";
 import AIChat from "@/components/AIChat";
-import ProjectBuilder from "@/components/ProjectBuilder";
-import TokenUsage from "@/components/TokenUsage";
 
 const Dashboard = () => {
   const [user, setUser] = useState<any>(null);
@@ -93,22 +89,26 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b glass-effect sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
+    <div className="flex flex-col h-screen bg-background">
+      {/* Minimal Header */}
+      <header className="border-b backdrop-blur-sm bg-background/80 sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg gradient-sunset" />
-              <div>
-                <h1 className="text-xl font-bold">SolanaBuilder</h1>
-                <p className="text-sm text-muted-foreground">
-                  {profile?.username || user.email}
-                </p>
-              </div>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded gradient-sunset" />
+              <h1 className="text-lg font-semibold">AI Builder</h1>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => navigate('/usage')}
+                className="text-xs"
+              >
+                <Coins className="w-3 h-3 mr-1" />
+                Usage
+              </Button>
               <WalletMultiButton />
               <Button variant="ghost" size="icon" onClick={handleSignOut}>
                 <LogOut className="w-4 h-4" />
@@ -118,36 +118,9 @@ const Dashboard = () => {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        <Tabs defaultValue="chat" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3 lg:w-[400px]">
-            <TabsTrigger value="chat" className="flex items-center gap-2">
-              <MessageSquare className="w-4 h-4" />
-              AI Chat
-            </TabsTrigger>
-            <TabsTrigger value="builder" className="flex items-center gap-2">
-              <Code className="w-4 h-4" />
-              Builder
-            </TabsTrigger>
-            <TabsTrigger value="usage" className="flex items-center gap-2">
-              <Coins className="w-4 h-4" />
-              Usage
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="chat">
-            <AIChat userId={user.id} />
-          </TabsContent>
-
-          <TabsContent value="builder">
-            <ProjectBuilder userId={user.id} />
-          </TabsContent>
-
-          <TabsContent value="usage">
-            <TokenUsage userId={user.id} />
-          </TabsContent>
-        </Tabs>
+      {/* Chat Interface - Full Height */}
+      <main className="flex-1 overflow-hidden">
+        <AIChat userId={user.id} />
       </main>
     </div>
   );
